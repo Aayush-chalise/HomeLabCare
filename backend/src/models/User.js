@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs"
+import mongoose from "mongoose"
+import  bcrypt from "bcryptjs"
 
-
-const modeluser = new mongoose.Schema ({
-name : {
+const UserScheme = new mongoose.Schema(
+    {
+        name : {
             type : String ,
             required : true ,
             trim : true
@@ -11,7 +11,8 @@ name : {
         email : {
             type : String ,
             required : true ,
-            unique : true 
+            unique : true ,
+            lowercase:true
         } ,
         password : {
             type : String ,
@@ -25,23 +26,20 @@ name : {
         }
     } , {
         timestamps : true
-    
-})
+    }
+)
 
-// hashing of password befor saving in mongo_db , 
 
-modeluser.pre("save" , async function () {
+UserScheme.pre("save" , async function () {
     if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password , 10)
     }
 })
 
-// pass matching bro  
-modeluser.methods.passwordmatch = async function (pass) {
-    return await bcrypt.compare(pass , this.password)
+UserScheme.methods.matchPassword = async function (entered_password) {
+    return await bcrypt.compare(entered_password , this.password)
 }
 
 
-// exporting brother our scherme
 
-export default mongoose.model("user" , modeluser)
+export default mongoose.model("User" , UserScheme)
