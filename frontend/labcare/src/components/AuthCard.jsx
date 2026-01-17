@@ -20,7 +20,7 @@ export default function AuthCard() {
     e.preventDefault();
     let data;
     if (isSignup) {
-      const response = await fetch("http://localhost:8080/api/register", {
+      const response = await fetch("http://localhost:8080/user/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -28,7 +28,7 @@ export default function AuthCard() {
       data = await response.json();
       if (data) setUser(data);
     } else {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("http://localhost:8080/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
