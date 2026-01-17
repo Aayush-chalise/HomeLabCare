@@ -2,6 +2,7 @@ import AppProvider from "./context/AppProvider.jsx";
 import Home from "./sections/Home.jsx";
 import { Routes, Route } from "react-router-dom";
 import AuthCard from "./components/AuthCard.jsx";
+import Dashboard from "./sections/Dashboard.jsx";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<AuthCard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </AppProvider>
   );

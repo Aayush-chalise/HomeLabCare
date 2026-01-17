@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   if (!user) return <div className="text-white p-16">Please log in first.</div>;
 
-  if (user.role === "client") return <UserDashboard user={user} />;
+  if (user) return <UserDashboard user={user} />;
 
   return <div className="text-white p-16">Unknown role.</div>;
 }
