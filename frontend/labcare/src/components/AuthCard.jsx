@@ -92,7 +92,7 @@ export default function AuthCard() {
                 type="email"
                 name="email"
                 onChange={handleChange}
-                placeholder="you@company.com"
+                placeholder="you@gmail.com"
                 className="w-full pl-10 pr-3 py-3 rounded-xl bg-white/6 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-[#34d399]/40 transition"
               />
             </div>
