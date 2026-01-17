@@ -11,15 +11,15 @@ const AppProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    // Sync token
     if (token) {
+      // local storage ma token rakhni
       localStorage.setItem("token", token);
     } else {
       localStorage.removeItem("token");
     }
 
-    // Sync user
     if (user) {
+      // local storage ma user detail rakhni
       localStorage.setItem("user", JSON.stringify(user));
     } else {
       localStorage.removeItem("user");
